@@ -1,5 +1,9 @@
 
 <template name="home">
+ 
+  
+{{#if currentUser}}  
+  
   
   <label>Add new product: </label><input name="newProductInput" id="newProductInput"><span class="btn btn-danger btn-sm" id="addNewProduct">Add new</span>
   
@@ -7,5 +11,11 @@
     <p>Products:</p> 
     {{#each products}} <span class="product" id="{{_id}}">{{name}}</span><br> {{/each}}
   </div>
-</template>
 
+
+{{else}}
+
+<h3>You must be logged in to do CRUD operations.</h3>
+
+{{/if}}
+</template>
