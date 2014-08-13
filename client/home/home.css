@@ -1,1 +1,12 @@
 /* CSS declarations go here */
+#newProductInput{
+  margin: 0 10px 0 10px;
+}
+
+.product{
+ cursor: pointer;
+}
+
+.well.products{
+  margin-top: 10px;
+}

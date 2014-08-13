@@ -1,1 +1,1 @@
-Meteor.subscribe("all-products");
+Meteor.subscribe('products');
