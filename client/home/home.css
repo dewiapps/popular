@@ -10,3 +10,22 @@
 .well.products{
   margin-top: 10px;
 }
+
+.lightbox{
+  width:  70px;
+  height: 50px;
+  background: url('http://www.iac-intl.com/wp-content/uploads/2014/06/Shop_build_modPulseJet_baghouse.jpg');
+  background-size: cover;
+  box-shadow: 2px 2px 12px black, 0 0 0 999px transparent;
+  transition: .8s width, .8s .8s height, 1s .6s box-shadow;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.lightbox.current{
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  transition-property: height, width, box-shadow;
+  box-shadow: 2px 2px 10px black, 0 0 0 999px rgba(0,0,0,.5);
+}
