@@ -4,4 +4,17 @@
   background-color: red;
   border-radius: 50%;
   cursor: pointer;
+  position: relative;
+  transition: 1s ease-in;
+}
+
+#addBall{
+  margin: 0 auto;
+}
+
+#ballContainer{
+  width: 400px;
+  height:400px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.2);
 }

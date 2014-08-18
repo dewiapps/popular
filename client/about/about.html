@@ -1,7 +1,20 @@
 <template name="about">
 <h1>About Page</h1>
-<div id="addBall" class="btn btn-danger">Create another ball</div>  
-  {{#each balls}}
-    <div class="ball"></div>
-  {{/each}}
+
+  {{#if currentUser}}
+<div class="text-center">
+  <span id="startBalls" class="btn btn-danger text-center">Start</span>
+<span id="addBall" class="btn btn-danger text-center">Create another ball</span>
+</div>
+  {{/if}}
+  <div id="ballContainer">
+    {{#if currentUser}}
+    {{#each balls}}
+      <div class="ball"></div>
+    {{/each}}
+
+    {{else}}
+      <h4>You must be signed in to create balls and have them bounce around.. but its worth it.</h4>
+    {{/if}}
+  </div>
 </template>
