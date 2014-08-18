@@ -1,0 +1,16 @@
+<template name="popular_parts">
+<h1>Most Popular Parts</h1>
+  <table class="table">
+    <tbody>
+      
+      {{#each products}}
+        <tr>
+          <td>{{name}}</td>
+          <td><span class="productVotes">{{votes}} approval</span></td>
+          <td><div id="voteButtons"><span class="voteUp btn btn-sm btn-success">Thumbs Up</span><span class="voteDown btn btn-sm btn-danger">Thumbs Down</span></div></td>
+        </tr> 
+      {{/each}}
+       
+    </tbody>  
+  </table>  
+</template>

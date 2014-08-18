@@ -4,5 +4,5 @@ Router.configure({
 Router.map(function(){
   this.route('home',{path:'/'});
   this.route('about',{path:'/about/'});
-  this.route('other-stuff',{path:'/other-stuff/'});
+  this.route('popular_parts',{path:'/popular-parts/'});
 });

@@ -7,7 +7,7 @@ Meteor.startup(function () {
                    "Air Pads",
                    "Air Horns"];
       for (var i = 0; i < names.length; i++)
-        Products.insert({name: names[i]});
+        Products.insert({name: names[i], upVotes: 0, downVotes: 0, percentApproval: 100});
     }
   if (Balls.find().count() === 0) {
       var names = ["Air Intake Filters",
