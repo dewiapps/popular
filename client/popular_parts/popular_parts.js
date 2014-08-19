@@ -1,6 +1,27 @@
+Session.setDefault('popularPartsSort','popularity');
+
 Template.popular_parts.products = function(){
-  return Products.find({}, {sort: {percentApproval: -1}});
+  var sortParameter = Session.get('popularPartsSort');
+  if(sortParameter == 'popularity')
+    return Products.find({}, {sort: {percentApproval: -1}});
+  if(sortParameter == 'alphabetical')
+    return Products.find({}, {sort: {name: 1}});
  }
+
+Template.popular_parts.popSortClass = function(){
+  if (Session.get('popularPartsSort') == 'popularity')
+    return "btn-success";
+  else
+    return ""; 
+}
+
+Template.popular_parts.alphSortClass = function(){
+  if (Session.get('popularPartsSort') == 'alphabetical')
+    return "btn-success";
+  else
+    return ""; 
+}
+
 
 Template.popular_parts.btnSuccessClass = function(){
   var userLike = UserVotes.findOne({$and: [
@@ -42,6 +63,12 @@ Template.popular_parts.votes = function(tmpl){
 }
 
 Template.popular_parts.events({
+  'click #popSort': function(){
+    Session.set('popularPartsSort','popularity');
+  },
+  'click #alphSort': function(){
+    Session.set('popularPartsSort','alphabetical');
+  },
   'click .voteUp': function(evt,tmpl){
     var hasBeenVotedOn = ( UserVotes.find({user: Meteor.user(), product: this._id}).count() ) ? true : false; 
     
