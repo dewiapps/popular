@@ -32,7 +32,7 @@ var clickCounter = 0;
         var productInput = $('#newProductInput')
         var newProduct = productInput.val();
         check(newProduct, String);
-        if(newProduct !== "") Products.insert({name: newProduct, votes: 0});
+        if(newProduct !== "") Products.insert({name: newProduct, upVotes: 0, downVotes: 0, percentApproval: 100});
         $('#newProductInput').val("");
       }
     },

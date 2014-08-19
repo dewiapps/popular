@@ -5,3 +5,7 @@
 .voteUp{
   margin-right: 10px;
 }
+
+tr{
+  transition: 1s;
+}

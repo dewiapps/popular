@@ -26,6 +26,10 @@ Meteor.publish('balls',function(){
     return Balls.find();
 });
 
+Meteor.publish('uservotes',function(){
+  return UserVotes.find();
+});
+
 Meteor.methods({
   randomProduct: function(){
     return currChoice;
