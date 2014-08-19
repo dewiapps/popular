@@ -1,20 +1,41 @@
-.ball{
-  width: 50px;
-  height: 50px;
-  background-color: red;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  transition: 1s ease-in;
+.nd_smi{
+  display: inline-block;
+  height: 43px;
+  width: 43px;
+  background-repeat:no-repeat;
+  margin-right: 5px;
+  
+  overflow: hidden;
 }
 
-#addBall{
-  margin: 0 auto;
+.nd_smi #overlay    {  
+               background:rgba(0,0,0,.3);
+               text-align:center;
+               opacity:0;
+               height: 43px;
+               width: 43px;
+               overflow: hidden;
+               margin-right: 5px;
+               padding-right: 5px;
+               transition: 1s ease;   
 }
 
-#ballContainer{
-  width: 400px;
-  height:400px;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.2);
+.nd_smi:hover #overlay{
+  opacity: 1;
+}
+
+.nd_smi.smi_lnkdn{
+  background: url("/resources/icons.png") 0 0;
+}
+
+.nd_smi.smi_fbk{
+  background: url("/resources/icons.png") -43px 0;
+}
+
+.nd_smi.smi_goog{
+  background: url("/resources/icons.png") -86px 0;
+}
+
+.nd_smi.smi_twit{
+  background: url("/resources/icons.png") -129px 0;
 }

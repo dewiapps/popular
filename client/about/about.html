@@ -1,20 +1,23 @@
 <template name="about">
-<h1>About Page</h1>
-
-  {{#if currentUser}}
-<div class="text-center">
-  <span id="startBalls" class="btn btn-danger text-center">Start</span>
-<span id="addBall" class="btn btn-danger text-center">Create another ball</span>
-</div>
-  {{/if}}
-  <div id="ballContainer">
-    {{#if currentUser}}
-    {{#each balls}}
-      <div class="ball"></div>
-    {{/each}}
-
-    {{else}}
-      <h4>You must be signed in to create balls and have them bounce around.. but its worth it.</h4>
-    {{/if}}
-  </div>
+<h1>About</h1>
+  
+    <div class="nd_smi smi_lnkdn">
+      <a href="https://www.linkedin.com/company/3833030?trk=tyah&trkInfo=tarId%3A1408473329466%2Ctas%3Aindustrial%20accessories%20company%2Cidx%3A2-1-2"><div id="overlay"></div></a>
+    </div>
+  
+  
+    <div class="nd_smi smi_fbk">
+      <a href="https://www.facebook.com/IAC.INTL"><div id="overlay"></div></a>
+    </div>
+  
+  
+    <div class="nd_smi smi_goog">
+      <a href="https://plus.google.com/+Iac-intl/posts"><div id="overlay"></div></a>
+    </div>
+  
+  
+    <div class="nd_smi smi_twit">
+      <a href="https://twitter.com/IACintl"><div id="overlay"></div></a>
+    </div>
+  
 </template>
