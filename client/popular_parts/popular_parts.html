@@ -4,10 +4,15 @@
     <h1>Most Popular Parts</h1>
   </div>
   <div class="col-xs-6">
-    <h4 id="sortOrderSection">Sort Order: 
-    <span id="popSort" class="btn btn-default {{popSortClass}}">Popularity</span>
-    <span id="alphSort" class="btn btn-default {{alphSortClass}}">Alphabetical</span>
-    </h4>  
+    <h5 id="sortOrderSection">Sort Order: 
+      <span id="popSort" class="btn btn-xs btn-default {{popSortClass}}">Popularity</span>
+      <span id="alphSort" class="btn btn-xs btn-default {{alphSortClass}}">Alphabetical</span>
+    </h5>
+    <h5 id="sortOrderSection">Show: 
+      <span id="allSort" class="btn btn-xs btn-default {{allSortClass}}">All</span>
+      <span id="votedSort" class="btn btn-xs btn-default {{votedSortClass}}">I've Voted On</span>
+      <span id="notVotedSort" class="btn btn-xs btn-default {{notVotedSortClass}}">I Haven't Voted On</span>  
+    </h5>
   </div>
 </div>
   <table class="table">
@@ -17,10 +22,24 @@
         <tr>
           <td>{{name}}</td>
           <td><span class="productVotes">{{votes}} approval</span></td>
-          <td><div id="voteButtons"><span class="voteUp btn btn-sm btn-default {{btnSuccessClass}}">Like</span><span class="voteDown btn btn-sm btn-default {{btnDangerClass}}">Dislike</span></div></td>
+          <td>
+            <div id="voteButtons">
+            <div class="voteUp btn btn-xs btn-default {{btnSuccessClass}}">
+              <span class="glyphicon glyphicon-thumbs-up"></span>
+            </div>
+            <div class="voteDown btn btn-xs btn-default {{btnDangerClass}}">
+              <span class="glyphicon glyphicon-thumbs-down"></span>
+            </div>
+            </div>
+          </td>
         </tr> 
       {{/each}}
        
     </tbody>  
   </table>  
+  
+  {{#each likedItems}}
+    {{product}}<br>
+  {{/each}}
+  
 </template>
