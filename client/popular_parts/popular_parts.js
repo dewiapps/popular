@@ -8,8 +8,12 @@ Template.popular_parts.products = function(){
   if(showParameter == 'all'){
     if(sortParameter == 'popularity')
       return Products.find({}, {sort: {percentApproval: -1}});
+    if(sortParameter == 'popularityReverse')
+      return Products.find({}, {sort: {percentApproval: 1}});
     if(sortParameter == 'alphabetical')
       return Products.find({}, {sort: {name: 1}});
+    if(sortParameter == 'alphabeticalReverse')
+      return Products.find({}, {sort: {name: -1}});
   }
   if(showParameter == 'voted'){ 
     if(sortParameter == 'popularity')
@@ -30,14 +34,14 @@ Template.popular_parts.likedItems = function(){
 }
 
 Template.popular_parts.popSortClass = function(){
-  if (Session.get('popularPartsSort') == 'popularity')
+  if ((Session.get('popularPartsSort') == 'popularity') || (Session.get('popularPartsSort') == 'popularityReverse'))
     return "btn-success";
   else
     return ""; 
 }
 
 Template.popular_parts.alphSortClass = function(){
-  if (Session.get('popularPartsSort') == 'alphabetical')
+  if ((Session.get('popularPartsSort') == 'alphabetical') || (Session.get('popularPartsSort') == 'alphabeticalReverse'))
     return "btn-success";
   else
     return ""; 
@@ -94,27 +98,40 @@ Template.popular_parts.btnDangerClass = function(){
     return "";  
 }
 
-Template.popular_parts.votes = function(tmpl){
+Template.popular_parts.votePercentage = function(tmpl){
   var totalVotes = this.upVotes + this.downVotes;
+  var neededVotes = 3;
 
-  if (totalVotes === 0){
-    return this.percentApproval + '%';
+  if (totalVotes < neededVotes){
+    var votes = neededVotes - totalVotes;
+    return "Needs " + votes + " more votes to calculate";
   }
   else{
     var percentage = Math.round((this.upVotes/totalVotes) * 100);
     if (percentage < 0) percentage = 0;
     Products.update(this._id, {$set: {percentApproval: percentage}});
-    return percentage + '%';
+    return percentage + '% approval';
   }
     
 }
 
+Template.popular_parts.numberVotes = function(){
+  return this.upVotes + this.downVotes;
+}
+
+
 Template.popular_parts.events({
   'click #popSort': function(){
-    Session.set('popularPartsSort','popularity');
+    if(Session.get('popularPartsSort') == 'popularity')
+      Session.set('popularPartsSort','popularityReverse');
+    else
+      Session.set('popularPartsSort','popularity');
   },
   'click #alphSort': function(){
-    Session.set('popularPartsSort','alphabetical');
+    if(Session.get('popularPartsSort') == 'alphabetical')
+      Session.set('popularPartsSort','alphabeticalReverse');
+    else
+      Session.set('popularPartsSort','alphabetical');
   },
   'click #allSort': function(){
     Session.set('showSort','all');

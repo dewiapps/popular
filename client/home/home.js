@@ -23,7 +23,7 @@ var clickCounter = 0;
     'click #addNewProduct': function(){
       var newProduct = $('#newProductInput').val();
       check(newProduct, String);
-      if(newProduct !== "") Products.insert({name: newProduct});
+      if(newProduct !== "") Meteor.call('insertProduct',newProduct);
       $('#newProductInput').val("");
       $('#newProductInput').focus();
     },
@@ -32,7 +32,7 @@ var clickCounter = 0;
         var productInput = $('#newProductInput')
         var newProduct = productInput.val();
         check(newProduct, String);
-        if(newProduct !== "") Products.insert({name: newProduct, upVotes: 0, downVotes: 0, percentApproval: 100});
+        if(newProduct !== "") Meteor.call('insertProduct',newProduct);
         $('#newProductInput').val("");
       }
     },
@@ -49,14 +49,7 @@ var clickCounter = 0;
     }
   });// end events helpers
 
-setInterval(function(){
-  Meteor.call('randomProduct', function(err, data){
-    if (err)
-      console.log(err);
-    else
-      $('#randomProduct').html(data);
-  });
-},5000);
+
 
 
 

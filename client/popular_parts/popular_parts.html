@@ -21,7 +21,8 @@
       {{#each products}}
         <tr>
           <td>{{name}}</td>
-          <td><span class="productVotes">{{votes}} approval</span></td>
+          <td><span class="productVotes">{{votePercentage}}</span></td>
+          {{#if currentUser}}
           <td>
             <div id="voteButtons">
             <div class="voteUp btn btn-xs btn-default {{btnSuccessClass}}">
@@ -31,6 +32,12 @@
               <span class="glyphicon glyphicon-thumbs-down"></span>
             </div>
             </div>
+          </td>
+          {{else}}
+           <td>Sign in to vote</td>
+          {{/if}}
+          <td>
+              <span>{{numberVotes}} votes</span>
           </td>
         </tr> 
       {{/each}}
