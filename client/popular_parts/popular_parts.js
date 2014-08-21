@@ -37,12 +37,11 @@ Template.popular_parts.currentUserOnList = function(){
   if(Meteor.user() === null)
     return false;
   
-  var emailList = ['natedeanmail@gmail.com','ndean@iac-intl'];
+  var emailList = ['natedeanmail@gmail.com','ndean@iac-intl.com','mattman@matt.com'];
   
   if ( emailList.indexOf(Meteor.user().emails[0].address) > -1 )
     return true;
   else
-    alert('Your email address is not on our list!');
     return false;
 }
 
