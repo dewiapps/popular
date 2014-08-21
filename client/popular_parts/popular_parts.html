@@ -23,18 +23,22 @@
           <td>{{name}}</td>
           <td><span class="productVotes">{{votePercentage}}</span></td>
           {{#if currentUser}}
-          <td>
-            <div id="voteButtons">
-            <div class="voteUp btn btn-xs btn-default {{btnSuccessClass}}">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-            </div>
-            <div class="voteDown btn btn-xs btn-default {{btnDangerClass}}">
-              <span class="glyphicon glyphicon-thumbs-down"></span>
-            </div>
-            </div>
-          </td>
+            {{#if currentUserOnList}}
+            <td>
+              <div id="voteButtons">
+              <div class="voteUp btn btn-xs btn-default {{btnSuccessClass}}">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+              </div>
+              <div class="voteDown btn btn-xs btn-default {{btnDangerClass}}">
+                <span class="glyphicon glyphicon-thumbs-down"></span>
+              </div>
+              </div>
+            </td>
+            {{else}}
+             <td>You are signed in... but your email address is not on the list.<br>So you still can't vote.</td>
+            {{/if}}
           {{else}}
-           <td>Sign in to vote</td>
+            <td>Your email address must be on the list,<br>and you must be signed in to vote.</td>
           {{/if}}
           <td>
               <span>{{numberVotes}} votes</span>

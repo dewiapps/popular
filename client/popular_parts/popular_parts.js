@@ -33,6 +33,19 @@ Template.popular_parts.likedItems = function(){
   return UserVotes.find({user: Meteor.user()});
 }
 
+Template.popular_parts.currentUserOnList = function(){
+  if(Meteor.user() === null)
+    return false;
+  
+  var emailList = ['natedeanmail@gmail.com','ndean@iac-intl'];
+  
+  if ( emailList.indexOf(Meteor.user().emails[0].address) > -1 )
+    return true;
+  else
+    alert('Your email address is not on our list!');
+    return false;
+}
+
 Template.popular_parts.popSortClass = function(){
   if ((Session.get('popularPartsSort') == 'popularity') || (Session.get('popularPartsSort') == 'popularityReverse'))
     return "btn-success";
