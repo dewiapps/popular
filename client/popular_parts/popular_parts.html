@@ -5,8 +5,8 @@
   </div>
   <div class="col-xs-6">
     <h5 id="sortOrderSection">Sort Order: 
-      <span id="popSort" class="btn btn-xs btn-default {{popSortClass}}">Popularity</span>
       <span id="alphSort" class="btn btn-xs btn-default {{alphSortClass}}">Alphabetical</span>
+      <span id="popSort" class="btn btn-xs btn-default {{popSortClass}}">Popularity</span>
     </h5>
     <h5 id="sortOrderSection">Show: 
       <span id="allSort" class="btn btn-xs btn-default {{allSortClass}}">All</span>
@@ -49,8 +49,18 @@
     </tbody>  
   </table>  
   
-  {{#each likedItems}}
-    {{product}}<br>
-  {{/each}}
-  
+  <div class="row">
+  <div class="col-sm-6">
+    <h3>I voted on:</h3>
+    {{#each likedItems}}
+      {{_id}}<br>
+    {{/each}}
+  </div>
+    <div class="col-sm-6">
+    <h3>All available are:</h3>
+    {{#each availableProducts}}
+      {{_id}}<br>
+    {{/each}}
+      </div>
+  </div>
 </template>
