@@ -4,6 +4,9 @@ Session.setDefault('showSort','all');
 Template.popular_parts.products = function(){
   var sortParameter = Session.get('popularPartsSort');
   var showParameter = Session.get('showSort');
+  var productsThisUserHasVotedFor = UserVotes.find({user: Meteor.user()}).map(function(vote){
+    return vote.product;
+  });
   
   if(showParameter == 'all'){
     if(sortParameter == 'popularity')
@@ -16,10 +19,6 @@ Template.popular_parts.products = function(){
       return Products.find({}, {sort: {name: -1}});
   }
   if(showParameter == 'voted'){ 
-    var productsThisUserHasVotedFor = UserVotes.find({user: Meteor.user()}).map(function(vote){
-    return vote.product;
-  });
-    
     if(sortParameter == 'popularity')
       return Products.find({_id: {$in: productsThisUserHasVotedFor}}, {sort: {percentApproval: -1}});
     if(sortParameter == 'popularityReverse')
@@ -31,9 +30,13 @@ Template.popular_parts.products = function(){
   }
   if(showParameter == 'notVoted'){  
     if(sortParameter == 'popularity')
-      return Products.find({}, {sort: {percentApproval: -1}});
+      return Products.find({_id: {$nin: productsThisUserHasVotedFor}}, {sort: {percentApproval: -1}});
+    if(sortParameter == 'popularityReverse')
+      return Products.find({_id: {$nin: productsThisUserHasVotedFor}}, {sort: {percentApproval: 1}});
     if(sortParameter == 'alphabetical')
-      return Products.find({}, {sort: {name: 1}});
+      return Products.find({_id: {$nin: productsThisUserHasVotedFor}}, {sort: {name: 1}});
+    if(sortParameter == 'alphabeticalReverse')
+      return Products.find({_id: {$nin: productsThisUserHasVotedFor}}, {sort: {name: -1}});
   }
  } // end products helper
 
@@ -43,8 +46,7 @@ Template.popular_parts.likedItems = function(){
   });
   
   if (productsThisUserHasVotedFor.length > 0){
-    console.log(productsThisUserHasVotedFor);
-    return Products.find({_id: {$in: productsThisUserHasVotedFor}});
+    return Products.find({_id: {$nin: productsThisUserHasVotedFor}});
   }
   
   //return UserVotes.find({user: Meteor.user()},{sort: {_id: 1}});
