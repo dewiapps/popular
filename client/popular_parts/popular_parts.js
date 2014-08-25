@@ -40,22 +40,6 @@ Template.popular_parts.products = function(){
   }
  } // end products helper
 
-Template.popular_parts.likedItems = function(){
-  var productsThisUserHasVotedFor = UserVotes.find({user: Meteor.user()}).map(function(vote){
-    return vote.product;
-  });
-  
-  if (productsThisUserHasVotedFor.length > 0){
-    return Products.find({_id: {$nin: productsThisUserHasVotedFor}});
-  }
-  
-  //return UserVotes.find({user: Meteor.user()},{sort: {_id: 1}});
-}
-
-Template.popular_parts.availableProducts = function(){  
-  return Products.find({});
-}
-
 
 Template.popular_parts.currentUserOnList = function(){
   if(Meteor.user() === null)
@@ -92,6 +76,16 @@ Template.popular_parts.numberVotes = function(){
   return this.upVotes + this.downVotes;
 }
 
-
+//Template.popular_parts.likedItems = function(){
+//  var productsThisUserHasVotedFor = UserVotes.find({user: Meteor.user()}).map(function(vote){
+//    return vote.product;
+//  });
+//  
+//  if (productsThisUserHasVotedFor.length > 0){
+//    return Products.find({_id: {$nin: productsThisUserHasVotedFor}});
+//  }
+//  
+//  //keeping this for now because it is really really good... not using currently
+//}
 
 

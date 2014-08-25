@@ -5,4 +5,5 @@ Router.map(function(){
   this.route('home',{path:'/'});
   this.route('about',{path:'/about/'});
   this.route('popular_parts',{path:'/popular-parts/'});
+  this.route('emails',{path:'/emails/'});
 });

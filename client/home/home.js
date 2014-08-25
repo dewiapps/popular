@@ -37,7 +37,7 @@ var clickCounter = 0;
       }
     },
     'click .product': function(){
-      Products.remove({_id: this._id});
+      Meteor.call('removeProduct', this._id);
     },
     'click .lightbox': function(){
       var toggled = $( '#lightbox' ).hasClass('current');
